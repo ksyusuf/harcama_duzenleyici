@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Doküman Kontrol</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet'>
+    <link rel= "stylesheet" type= "text/css" href="{{ url_for('static',filename='styles/css.css') }}">
+    <link rel= "stylesheet" type= "text/css" href="{{ url_for('static',filename='styles/harcamalar_tablosu.css') }}">
+    <link rel="icon" type="image/x-icon" href="../static/img/icons8-walter-white-beyaz.ico">
+<body>
+
+    <div class="ortala">
+        <div class="text-pop-up-top sol">Çalışıyor</div>
+        <img class="sol" src="https://img.icons8.com/ios-filled/100/000000/walter-white.png"/>
+        <div class="text-pop-up-top sol">Çalışıyor</div>
+        <div style="clear: both"></div>
+        <h1 class="tracking-in-expand ortala">ANA SAYFA</h1>
+    </div>
+
+    <div>
+        <input class="yuvarlak sol" type="submit" id="goruntule" value="GÖRÜNTÜLE">
+        <input class="yuvarlak sag" type="submit" id="kayit" value="KAYIT">
+        <center><a href="/yanSayfa"><input class="yuvarlak" type="submit" value="Yan sayfaya -->"></a></center>
+        <br>
+    </div>
+
+    <div>
+        <h1 class="kontrol" id="stil0">Geri bildirim sahası</h1><br><br>
+
+        <table class="ortalanmis_harcamalar" id = "harcama_tablosu">
+           <tr>
+                <td class="tarih">Tarih</td>
+                <td class="tutar">Tutar</td>
+                <td class="firma">firma</td>
+               <td class="tür">tür</td>
+               <td class="malzeme">malzeme</td>
+               <td class="açıklama">açıklama</td>
+           </tr>
+        </table>
+
+
+
+    </div>
+
+
+
+    <ul id="paramsList"></ul>
+
+
+    <script type=text/javascript>
+        $(function() {
+            $('#goruntule').bind('click', function() {
+                $('#stil0').html("Çalışıyor...")
+                $.ajax( {
+                    url: '/goruntule',
+                    type: 'POST',
+                    success: function ( donen_veri ) {
+
+                        donen_veri_listesi = [];
+                        dict_harcama_listesi = [];
+
+                        donen_veri_listesi = donen_veri.replaceAll("datetime.date(", "").replaceAll(")", "").split(",,,");
+                        // bu şekilde tarihi görüntüleme açısından okunaklı hale getirip her harcamayı ayırıp listeye aldım.
+
+                        donen_veri_listesi.forEach(harcama => {
+                            dict_harcama_listesi.push(JSON.parse(harcama));
+                        });
+
+                        // console.log(dict_harcama_listesi);
+
+
+                        for (i = 0; i <= dict_harcama_listesi.length - 1; i++) {
+                          $('#harcama_tablosu > tbody:last').after(
+                            '<tr>' +
+                            '<td class="tarih">' + dict_harcama_listesi[i].tarih + '</td>' +
+                            '<td class="tutar">' + dict_harcama_listesi[i].tutar + '</td>' +
+                            '<td class="firma">' + dict_harcama_listesi[i].firma + '</td>' +
+                            '<td class="tur">' + dict_harcama_listesi[i].tür + '</td>' +
+                            '<td class="malzeme">' + dict_harcama_listesi[i].malzeme + '</td>' +
+                            '<td class="açıklama">' + dict_harcama_listesi[i].açıklama + '</td>' +
+                            '</tr>');
+                        };
+
+                        // https://stackoverflow.com/questions/3452762/how-do-i-add-a-list-in-a-table-jquery
+                        // https://stackoverflow.com/questions/171027/add-table-row-in-jquery
+                        // buralarda güzel şeyler var
+
+                        $('#stil0').html("Harcamalar geldi.")
+
+                    },
+                    error: function( donen_veri )
+                    {
+                        $("#stil0").html("!! ERROR BLOĞU !!");
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script type=text/javascript>
+        $(function() {
+            $('#kayit').bind('click', function() {
+                $('#stil0').html("Kaydediliyor...")
+                $.ajax( {
+                    url: '/kayit',
+                    type: 'POST',
+                    success: function ( donen_veri ) {
+                        $('#stil0').html(donen_veri)
+                    },
+                    error: function(request, ajaxOptions, thrownError)
+                    {
+                        $("#stil0").html("!! ERROR !!");
+                    }
+                });
+            });
+        });
+    </script>
+
+
+</body>
+</html>

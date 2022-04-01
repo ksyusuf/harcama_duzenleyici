@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "pristine-sum-345907",
+  "private_key_id": "7f01cbde84c8cea34e066e7151aa1546b82cac2f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDUruz89uPM1vf9\nmR0ze+hqqXulUuJaK0EK9SZXIFh1cnzrpg6EazPbb2m7No2zy2HjhfJvuI5IFQHq\nrYKiEPdAlFsHsVa7Dihe0yBSUIrglJpMQtLTbhHUSrXET26F7mK1FHfixrQiMNom\nWxJ1T+9CqCbqz1801yQBKivrwB6BubCQt/rqu/JH6wNzb6ph3rMu9kq2iIwzh+cA\nyWaHjvg2QTQUtbplZZibiKLR3hXYA/7Q5SdHIMivVHEXK57asGLBElWMFduBf1Zu\nj+aZl+YZv2CQyB3kUlKkcJpvDblE+/jckhwfOpYVLeKTCJxfkuNmKXPHoGfaXuD7\n3YhbR7e7AgMBAAECggEANLteROYN2wbdm8HvzIkHOhLldjsTphmdWdMoe2eopw4I\nzQByDwDpbZm1FFbVUWO21IusbWjL1jFnNUFp5zbfpuJho4mjoGNFPSWJmP8hP8d4\nbjoPPZ7HyuPvJ0oudASD8rOtecucc/G61NG1xOJZxyQb6hIaX+aLpcJH+3650Z29\nj6VH4ABzXN+7tfhaHSWr0leVJYSQy5/fdo06SvHRg4KYCB4paHD/YdLrytLR5uy9\nLvQHFV+ORuyYLAO8ceJxgDjPnUlag4wkXCh+Z56AE0u6tBWIaMFZUWagEEnkoL6o\nXpvcuArUtryJ0+V0O8xaQDcuRFXS1StdRffMGGmJeQKBgQD7vyR7/sF9HTw1JtOl\nKOJm7ehi63ABizzUmdeoIxdysWOyKBnBAttGcX9jfEG+hYrqNtRyL1BW3BU7HrM3\n6Jz6Ou7o8a2SUdJ7aUbkNeZMDalz1p6bpSYSqkj2Gyb9KRIN1VAqbsuiC/bfNWV1\niEhHdM8dLm0LnHY65ktZ+XYrXwKBgQDYRtNzv0bc4CUxr3A8h6cYqCnIpP1P97v4\nMfc6lb8Gg6aDwaCI5tvOwY+oZDy+xbWX0BHHNGo3lnuM3VODS2RBhTQ0qAEYUPx/\nYsrV/ZaaUXkR3T6QsHw8Z57FwsTEy6+LcI8jNUT0a8HeARbOR3jlYf42VxeM6Jfl\n+wXmOMRtJQKBgEBnL/BAxkM5vXNjkXWJNhJa/r5/uNHMSy2ghdlP0OnYk8a6F4yX\nLH2i/5H18ePJyjYM/OCRVh5Cg3PycKr26WHivcf+PAdYw14rGqW7XEVMoXMvDriG\n0Wyo/61mWN0fKq07Sxzv50x3fxqvUFt3F/af3XR7sg3sYxrCW7iS5zZFAoGAQSc9\nBi6GS33e1pPybNm01fG6/K3vfcq0vrVWtDhuXqkEXcbT9MoPR7755xGjVxk6dmyB\nHpDEutBDkhEO2ou4vSBCtOYzxj6HglyhnEuTthN7NI2BDpeMJapVo1/kZSCzVn9n\nL4UZq8RWl+meFDBl1DxsF7Su7I0ZTXgMs+lAC10CgYAPeQ4dGWTV4yh+ymjXgfcz\n7NOV9dFL/Osp/bCzEuicifAjljLLH9SX+7emhEHObWVdnTJdYJ3ssc4p0zDmY/Dr\nu271AiU7jtZVOAuffAjkBMMm50TJ829dp48M+/fJPxyoYkZrfJhYsP8K6Ntc1qJ7\niMZyWwBB/7Uj06aWoM5PmQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "donem-odevi-konrolcum@pristine-sum-345907.iam.gserviceaccount.com",
+  "client_id": "109541103347760571588",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/donem-odevi-konrolcum%40pristine-sum-345907.iam.gserviceaccount.com"
+}

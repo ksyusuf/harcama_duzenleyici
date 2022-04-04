@@ -14,6 +14,7 @@ JSON = 'kontrolcu-key.json'
 
 class GoogleDocs:
     def __init__(self):
+        # yapıcı fonksiyon
         self.SCOPES = ['https://www.googleapis.com/auth/documents']
         self.DOCUMENT_ID = DOCUMENT_ID
         self.creds = ServiceAccountCredentials.from_json_keyfile_name(JSON, self.SCOPES)

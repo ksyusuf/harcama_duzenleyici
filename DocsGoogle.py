@@ -1,6 +1,7 @@
 from __future__ import print_function
 from googleapiclient.discovery import build
 from oauth2client.service_account import ServiceAccountCredentials
+import pprint
 
 DOCUMENT_ID = '1wOXdJ8ZbG3BQc205kVQIfoO8WOCi2oHwmOx7lx69kBc'
 # google docs'taki dokümanın link kısmındaki id'si

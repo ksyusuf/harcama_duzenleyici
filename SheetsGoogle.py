@@ -1,7 +1,5 @@
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-from googleapiclient import discovery
-import datetime
 
 JSON = 'kontrolcu-key.json'
 # bu key sheets için de docs için de kullanılıyor.
@@ -11,7 +9,6 @@ class GoogleSheets:
         scope = ["https://www.googleapis.com/auth/drive"]
 
         creds = ServiceAccountCredentials.from_json_keyfile_name(JSON, scope)
-        self.service = discovery.build('sheets', 'v4', credentials=creds)
 
         # şu alttaki kısım: gspread kütüphanesi ile çalışıyor.
         # bu kütüphaneyi kullanabilmek için de google drive api aktif edilmeli.
@@ -19,34 +16,21 @@ class GoogleSheets:
         client = gspread.authorize(creds)
         self.sheet = client.open("Gider Düzenleyici").sheet1  # Open the spreadhseet
 
-    def veri_ekleme(self, return_edilmis_veri):
+    def veri_ekleme(self, harcama):
+        eklenecek_sharcama = [harcama["tarih"],
+                              harcama["harcama"],
+                              float(harcama["tutar"]),
+                              harcama["açıklama"]]
 
-        for harcama in return_edilmis_veri:
-            tarih = harcama["tarih"]  # buradan datetime formatında veri gelecek
-            gelen_gun_degeri = datetime.date(year=tarih.year, month=tarih.month, day=tarih.day).toordinal()
-            gelen_gun_degeri = gelen_gun_degeri - 693594
-
-            eklenecek_sharcama = [gelen_gun_degeri,
-                                  float(harcama["tutar"]),
-                                  harcama["firma"],
-                                  harcama["tür"],
-                                  harcama["malzeme"],
-                                  harcama["açıklama"]]
-
-            self.sheet.insert_row(eklenecek_sharcama, 4)
-
+        self.sheet.insert_row(eklenecek_sharcama, 3)
 
 if __name__ == '__main__':
     print("Çalışıyor...")
     sheets = GoogleSheets()
 
-    gelen_gun_tarihi = datetime.date(year=2021, month=11, day=5)
-
-    yuklenen_veri = [{'tarih': gelen_gun_tarihi,
-                      'tutar': 55,
-                      'firma': 'Albatros',
-                      'tür': 'Kişisel',
-                      'malzeme': 'Nargile',
-                      'açıklama': 'Sheetsi içeriden çalıştırdım'}]
-    sheets.veri_ekleme(yuklenen_veri)
+    yuklenecek_veri = {'tarih': "15.04.2022",
+                       'harcama': 'balık ekmek',
+                       'tutar': 25,
+                       'açıklama': 'yemek'}
+    sheets.veri_ekleme(yuklenecek_veri)
     print("Harcama yüklendi.")

@@ -1,6 +1,5 @@
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-from googleapiclient import discovery
 import datetime
 
 JSON = 'kontrolcu-key.json'
@@ -11,7 +10,6 @@ class GoogleSheets:
         scope = ["https://www.googleapis.com/auth/drive"]
 
         creds = ServiceAccountCredentials.from_json_keyfile_name(JSON, scope)
-        self.service = discovery.build('sheets', 'v4', credentials=creds)
 
         # şu alttaki kısım: gspread kütüphanesi ile çalışıyor.
         # bu kütüphaneyi kullanabilmek için de google drive api aktif edilmeli.

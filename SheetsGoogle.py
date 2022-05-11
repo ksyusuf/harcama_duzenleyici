@@ -1,5 +1,6 @@
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+import datetime
 
 JSON = 'kontrolcu-key.json'
 # bu key sheets için de docs için de kullanılıyor.
@@ -16,13 +17,23 @@ class GoogleSheets:
         client = gspread.authorize(creds)
         self.sheet = client.open("Gider Düzenleyici").sheet1  # Open the spreadhseet
 
-    def veri_ekleme(self, harcama):
-        eklenecek_sharcama = [harcama["tarih"],
-                              harcama["harcama"],
-                              float(harcama["tutar"]),
-                              harcama["açıklama"]]
+    def veri_ekleme(self, harcamalar):
+        for harcama in harcamalar:
 
-        self.sheet.insert_row(eklenecek_sharcama, 3)
+            tarih = harcama["tarih"]  # buradan datetime formatında veri gelecek
+            gelen_gun_degeri = datetime.date(year=tarih.year, month=tarih.month, day=tarih.day).toordinal()
+            gelen_gun_degeri = gelen_gun_degeri - 693594
+            # google sheetse göre tarih düzeltme değeri bu.
+
+            yazdirilacak_veri = [
+                gelen_gun_degeri,
+                float(harcama['tutar']),
+                harcama['harcama'],
+                harcama['açıklama']
+                ]
+            print(yazdirilacak_veri)
+
+            self.sheet.insert_row(yazdirilacak_veri, 3)
 
 if __name__ == '__main__':
     print("Çalışıyor...")
